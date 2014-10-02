@@ -221,7 +221,7 @@ public class Shell {
                 }
             }
 
-            if (args[0].equals("cat")){
+            if (args[0].equals("cat")) {
                 done = true;
                 if ((args.length != 2)) {
                     throw new Exception(
