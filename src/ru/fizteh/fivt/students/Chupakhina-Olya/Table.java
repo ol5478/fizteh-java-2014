@@ -1,4 +1,4 @@
-package ru.fizteh.fivt.students.olga_chupakhina.multyfilehashmap;
+package ru.fizteh.fivt.students.olga_chupakhina.multifilehashmap;
 
 import java.io.*;
 import java.util.Map;
