@@ -1,4 +1,4 @@
-package ru.fizteh.fivt.students.olga_chupakhina.multyfilehashmap;
+package ru.fizteh.fivt.students.olga_chupakhina.multifilehashmap;
 
 import java.util.*;
 import java.io.*;
@@ -150,7 +150,7 @@ public class MultiFileHashMap {
 
     public static void drop(String[] args) throws Exception {
         if (args.length != 2) {
-            throw new Exception("create: invalid number of arguments");
+            throw new Exception("drop: invalid number of arguments");
         }
         String pathToTable = MultiFileHashMap.path + File.separator + args[1];
         File table = new File(pathToTable);
@@ -172,7 +172,7 @@ public class MultiFileHashMap {
 
     public static void use(String[] args) throws Exception {
         if (args.length != 2) {
-            throw new Exception("create: invalid number of arguments");
+            throw new Exception("use: invalid number of arguments");
         }
         if (MultiFileHashMap.tableList.get(args[1]) == null) {
             System.out.println(args[1] + " not exists");
