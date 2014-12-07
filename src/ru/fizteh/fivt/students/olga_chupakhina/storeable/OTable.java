@@ -1,6 +1,5 @@
 package ru.fizteh.fivt.students.olga_chupakhina.storeable;
 
-import com.sun.prism.impl.Disposer;
 import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
