@@ -54,5 +54,4 @@ public class TestOTableProviderFactory {
         }
         testDirectory.toFile().delete();
     }
-
 }
