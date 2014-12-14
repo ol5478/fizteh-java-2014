@@ -1,9 +1,10 @@
-package ru.fizteh.fivt.students.olga_chupakhina.storeable;
+package ru.fizteh.fivt.students.olga_chupakhina.parallel;
 
 import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OStoreable implements Storeable {
     public List<Class<?>> types;
@@ -55,7 +56,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Integer.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Integer. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Integer getIntAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -72,7 +73,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Long.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Long. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Long getLongAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -89,7 +90,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Byte.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Byte. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Byte getByteAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -106,7 +107,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Float.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Float. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Float getFloatAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -123,7 +124,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Double.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Double. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Double getDoubleAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -140,7 +141,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к Boolean.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к Boolean. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public Boolean getBooleanAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
@@ -157,7 +158,7 @@ public class OStoreable implements Storeable {
      * Возвращает значение из данной колонки, приведя его к String.
      * @param columnIndex - индекс колонки в таблице, начиная с нуля
      * @return - значение в этой колонке, приведенное к String. Может быть null.
-     * @throws ColumnFormatException - Запрошенный тип не соответствует типу колонки.
+     * @throws ru.fizteh.fivt.storage.structured.ColumnFormatException - Запрошенный тип не соответствует типу колонки.
      * @throws IndexOutOfBoundsException - Неверный индекс колонки.
      */
     public String getStringAt(int columnIndex) throws ColumnFormatException, IndexOutOfBoundsException {
