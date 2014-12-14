@@ -3,13 +3,13 @@ package ru.fizteh.fivt.students.olga_chupakhina.storeable;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
 
-import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.stringToClass;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.stringToClass;
 
 public class StoreableMain {
     public static boolean mode;
@@ -52,9 +52,11 @@ public class StoreableMain {
         try {
             while (true) {
                 System.out.print("$ ");
-                String [] s = sc.nextLine().trim().split(";");
-                for (String command : s) {
-                    doCommand(command);
+                if (sc.hasNextLine()) {
+                    String[] s = sc.nextLine().trim().split(";");
+                    for (String command : s) {
+                        doCommand(command);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -171,8 +173,8 @@ public class StoreableMain {
             System.out.println("not found");
         } else {
             System.out.println("found");
-            System.out.println(tableProvider.serialize(tableProvider.currentTable, 
-                        tableProvider.currentTable.get(args[1])));
+            System.out.println(tableProvider.serialize(tableProvider.currentTable,
+                    tableProvider.currentTable.get(args[1])));
         }
     }
 
