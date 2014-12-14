@@ -278,13 +278,13 @@ public class OTable implements Table {
     }
 
     public void writeSignature() throws IOException {
-        PrintWriter out = new PrintWriter(table.toPath().resolve("signature.tsv").toString());
-        for (Class<?> type : signature) {
-            out.print(classToString(type));
-            out.print("\t");
+        try (PrintWriter out = new PrintWriter(table.toPath().resolve("signature.tsv").toString())) {
+            for (Class<?> type : signature) {
+                out.print(classToString(type));
+                out.print("\t");
+            }
+            columnsCount = signature.size();
         }
-        columnsCount = signature.size();
-        out.close();
     }
 
     private void readSignature() throws IOException {
