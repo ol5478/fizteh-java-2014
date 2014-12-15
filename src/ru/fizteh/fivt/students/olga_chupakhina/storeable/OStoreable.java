@@ -63,7 +63,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Integer)) {
+        if (values.get(columnIndex).getClass() != Integer.class) {
             throw new ColumnFormatException("Column is not Integer");
         }
         return (Integer) values.get(columnIndex);
@@ -80,7 +80,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Long)) {
+        if (values.get(columnIndex).getClass() != Long.class) {
             throw new ColumnFormatException("Column is not Long");
         }
         return (Long) values.get(columnIndex);
@@ -97,7 +97,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Byte)) {
+        if (values.get(columnIndex).getClass() != Byte.class) {
             throw new ColumnFormatException("Column is not Byte");
         }
         return (Byte) values.get(columnIndex);
@@ -114,7 +114,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Float)) {
+        if (values.get(columnIndex).getClass() != Float.class) {
             throw new ColumnFormatException("Column is not Float");
         }
         return (Float) values.get(columnIndex);
@@ -131,7 +131,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Double)) {
+        if (values.get(columnIndex).getClass() != Double.class) {
             throw new ColumnFormatException("Column is not Double");
         }
         return (Double) values.get(columnIndex);
@@ -148,7 +148,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof Boolean)) {
+        if (values.get(columnIndex).getClass() != Boolean.class) {
             throw new ColumnFormatException("Column is not Boolean");
         }
         return (Boolean) values.get(columnIndex);
@@ -165,7 +165,7 @@ public class OStoreable implements Storeable {
         if (columnIndex > columnsNum) {
             throw new IndexOutOfBoundsException("This column does not exist");
         }
-        if (!(values.get(columnIndex) instanceof String)) {
+        if (values.get(columnIndex).getClass() != String.class) {
             throw new ColumnFormatException("Column is not String");
         }
         return (String) values.get(columnIndex);
