@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.stream.Collectors;
 
 import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.classToString;
 import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.stringToClass;
@@ -119,7 +118,7 @@ public class OTable implements Table {
         tableOperationsLock.readLock().lock();
         try {
             Set<String> keySet = sessionChanges.get().keySet();
-            return keySet.stream().collect(Collectors.toCollection(LinkedList::new));
+            return new LinkedList(keySet);
         } finally {
             tableOperationsLock.readLock().unlock();
         }
@@ -159,10 +158,10 @@ public class OTable implements Table {
                     if (!file.exists()) {
                         file.createNewFile();
                     }
-                    DataOutputStream outStream = new DataOutputStream(
-                            new FileOutputStream(pathToFile, true));
-                    writeValue(outStream, key, value);
-                    outStream.close();
+                    try(DataOutputStream outStream = new DataOutputStream(
+                            new FileOutputStream(pathToFile, true))) {
+                        writeValue(outStream, key, value);
+                    }
                 }
             } catch (IOException e) {
                 System.err.println(e.getMessage());
