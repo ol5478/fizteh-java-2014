@@ -10,9 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.stream.Collectors;
 
 import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.classToString;
 import static ru.fizteh.fivt.students.olga_chupakhina.storeable.Serializer.stringToClass;
@@ -30,7 +29,7 @@ public class OTable implements Table {
     public int columnsCount;
     final ThreadLocal<Map<String, Storeable>> sessionChanges =
             ThreadLocal.withInitial(HashMap::new);
-    private ReadWriteLock tableOperationsLock = new ReentrantReadWriteLock(true);
+    private ReentrantReadWriteLock tableOperationsLock = new ReentrantReadWriteLock(true);
 
     public OTable(String name, String pathname, List<Class<?>> columnTypes) {
         tableProvider = StoreableMain.tableProvider;
