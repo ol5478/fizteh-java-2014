@@ -1,12 +1,16 @@
-package ru.fizteh.fivt.students.olga_chupakhina.storeable;
+package ru.fizteh.fivt.students.olga_chupakhina.parallel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import ru.fizteh.fivt.storage.structured.ColumnFormatException;
 import ru.fizteh.fivt.storage.structured.Storeable;
 import ru.fizteh.fivt.storage.structured.Table;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Serializer {
 
@@ -81,32 +85,33 @@ public class Serializer {
     }
 
     public static Storeable deserialize(Table table, String value, List<Class<?>> signature) throws ParseException {
-        value = value.trim();
-        if (value.length() < 3
-                || value.charAt(0) != '['
-                || value.charAt(value.length() - 1) != ']'
-                || value.charAt(1) == ','
-                || value.charAt(value.length() - 2) == ',') {
-            throw new ParseException("invalid JSON", 0);
-        }
-        String[] tokens = value.substring(1, value.length() - 1).split(",");
-        if (tokens.length != table.getColumnsCount()) {
-            throw new ParseException("column count mismatch", 0);
-        }
-        List<Object> values = new ArrayList<>();
-        for (int i = 0; i < table.getColumnsCount(); i++) {
-            try {
-                if (tokens[i].trim().toLowerCase().equals("null")) {
-                    values.add(null);
-                } else {
-                    values.add(readerMap.get(table.getColumnType(i)).getObject(tokens[i].trim()));
-                }
-            } catch (Exception e) {
-                throw new ParseException("not a valid " + classToString(table.getColumnType(i))
-                        + " value", 0);
+        try {
+            value = value.trim();
+            if ((value.charAt(0) != '[' && value.charAt(value.length() - 1) != ']') || value == null) {
+                throw new IllegalArgumentException("StoreableParser: illegal argument");
             }
+            List<Object> values = new ArrayList<>();
+            JSONArray json = new JSONArray(value);
+            if (json.length() != table.getColumnsCount()) {
+                throw new ParseException("column count mismatch", 0);
+            }
+            for (int i = 0; i < json.length(); ++i) {
+                try {
+                    if (json.isNull(i)) {
+                        values.add(null);
+                    } else {
+                        values.add(readerMap.get(table.getColumnType(i)).getObject(json.get(i).toString().trim()));
+                    }
+                } catch (ClassCastException e) {
+                    throw new ParseException(json.get(i).toString(), 0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return new OStoreable(values, signature);
+        } catch (JSONException e) {
+            return null;
         }
-        return new OStoreable(values, signature);
     }
 
     public String serialize(Table table, Storeable value) {
